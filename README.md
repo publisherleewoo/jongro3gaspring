@@ -1,68 +1,93 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React setting
 
-## Available Scripts
+Node.js 설치 후
 
-In the project directory, you can run:
+# CRA 설치
 
-### `npm start`
+```bash
+$ npx create-react-app <project-name>
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+설치 후 프로젝트 폴더 진입
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+$ cd <project-name>
+```
 
-### `npm test`
+```bash
+$ npm run start
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+브라우저에서 [localhost:3000](http://localhost:3000) 접속했을때 화면 뜨면 cra(create-react-app) 설치 성공
 
-### `npm run build`
+## **React-router-dom 설치**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+$ npm i react-router-dom
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+원론적으로 리액트는 재활용을위한 분자,원자단위의 [atomic design](https://brunch.co.kr/@ultra0034/63) 패턴을 따라야하나,  일단 제작에 신경쓰고, 차후 리팩토링
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+라우터를 위해 일단 pages 폴더 생성
 
-### `npm run eject`
+```bash
+mkdir pages
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+HomePage.js, AboutPage.js파일 생성을 하고 아래 이미지와 같이페이지 컴포넌트 기본셋팅을한다.(저장)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+아래와 같이 함수형 컴포넌트를 사용하는 이유는,  최근 페이스북이 권장하면서도 리액트가 [Hooks](https://ko.reactjs.org/docs/hooks-intro.html)로 가는 추세이다.(코드도 더 짧아진다) .
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+주의할점은 컴포넌트 파일명 앞글자는 무조건 대문자여야 한다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![React%20setting%2088fb14fe2637448e83777d90785fbe7c/Untitled.png](React%20setting%2088fb14fe2637448e83777d90785fbe7c/Untitled.png)
 
-## Learn More
+![React%20setting%2088fb14fe2637448e83777d90785fbe7c/Untitled%201.png](React%20setting%2088fb14fe2637448e83777d90785fbe7c/Untitled%201.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+vscode에서 ctrl+shift+x를 누르면 마켓이 뜬다. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+이곳에서 Prettier - Code formatter를 설치한다.
 
-### Code Splitting
+코드 정렬 프로그램인데,  전체 선택후(ctrl+a)   alt+shift+f를 누르면 코드를 정렬해준다.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+App.js에 가서  아래 코드를 붙여넣기 한다.
 
-### Analyzing the Bundle Size
+아래 코드는 router 설정이다.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+ react-router-dom 라이브러리를 사용하였다. 
 
-### Making a Progressive Web App
+래퍼런스 사이트를 참고하여 아래와같은 설정을 하였다. 자세한 설명은 [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start)  참고.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```jsx
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
 
-### Advanced Configuration
+function App() {
+    return (
+        <BrowserRouter>
+            <Link to="/">홈</Link>
+            <Link to="/About">어바웃</Link>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+            <Switch>
+                <Route path={"/"} exact>
+                    <HomePage></HomePage>
+                </Route>
+                <Route path={"/about"} exact>
+                    <AboutPage></AboutPage>
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    );
+}
 
-### Deployment
+export default App;
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+아래 코드로 다시 localhost:3000을 띄워서 확인해보자.
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+npm run start
+```
