@@ -8,7 +8,7 @@
 
 [redux-saga](https://redux-saga.js.org/)
 
-1. 일단 redux와 react-redux만 설치하고 차후 redux-saga를 보기로한다.
+일단 redux와 react-redux만 설치하고 차후 redux-saga를 보기로한다.
 
 ```bash
 npm i redux react-redux
