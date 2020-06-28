@@ -1,20 +1,23 @@
+const PLUS = "/COUNTER/PLUS";
+const MINUS = "/COUNTER/MINUS";
+
 export const plusAction = () => {
     return {
-        type: "plus",
+        type: PLUS,
     };
 };
 
 export const minusAction = () => {
     return {
-        type: "minus",
+        type: MINUS,
     };
 };
 
 function reducer(state = 0, action) {
     switch (action.type) {
-        case "plus":
+        case PLUS:
             return state + 1;
-        case "minus":
+        case MINUS:
             return state - 1;
         default:
             return state;
