@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { plusAction } from "../reducer/test";
 
 const HomePage = () => {
-    const reduxState = useSelector((state) => state);
+    const reduxState = useSelector((state) => state.testReducer);
     const dispatch = useDispatch();
     console.log(reduxState);
     useEffect(() => {

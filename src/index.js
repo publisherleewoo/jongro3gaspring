@@ -5,15 +5,15 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { reducer, mySaga } from "./reducer/test";
+import { rootReducer, rootSaga } from "./reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-    reducer,
+    rootReducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>

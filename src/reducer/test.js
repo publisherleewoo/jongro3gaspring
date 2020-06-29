@@ -22,11 +22,11 @@ function* fetchUser(action) {
     }
 }
 
-function* mySaga() {
+function* testMySaga() {
     yield takeLatest(REQUEST, fetchUser);
 }
 
-function reducer(state = null, action) {
+function testReducer(state = null, action) {
     switch (action.type) {
         case SUCCESS:
             return action.payload;
@@ -37,4 +37,4 @@ function reducer(state = null, action) {
     }
 }
 
-export { reducer, mySaga };
+export { testReducer, testMySaga };
