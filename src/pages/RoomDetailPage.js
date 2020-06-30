@@ -1,7 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const RoomDetail = () => {
-    return <div>숙소정보</div>;
+    const { id } = useParams();
+    console.log(id);
+    return <div>숙소정보{id}</div>;
 };
 
 export default RoomDetail;

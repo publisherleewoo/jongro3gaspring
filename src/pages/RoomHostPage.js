@@ -1,7 +1,7 @@
 import React from "react";
 
 const RoomHostPage = () => {
-    return <div>RoomHostPage</div>;
+    return <div>호스트 페이지</div>;
 };
 
 export default RoomHostPage;
