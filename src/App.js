@@ -27,7 +27,7 @@ function App() {
             <Anchor to={"/room/host"}>호스트</Anchor>
             <Anchor to={"/room/list"}>리스트</Anchor>
             <Anchor to={"/room/detail/1"}>디테일(방목록) 1</Anchor>
-            <Anchor to={"/test"}>Leaflet Err</Anchor>
+            <Anchor to={"/test"}>Leaflet 서울시청 </Anchor>
 
             <Switch>
                 <Route path={"/"} exact component={HomePage} />
@@ -37,7 +37,12 @@ function App() {
                 <Route path={"/room/host"} component={RoomHostPage} />
                 <Route path={"/room/list"} component={RoomListPage} />
                 <Route path={"/room/detail/:id?"} component={RoomDetailPage} />
-                <Route path={"/test"} component={ReactLeaflet} />
+                <Route path={"/test"}>
+                    <ReactLeaflet
+                        lat="37.5666805"
+                        lng=" 126.9784147"
+                    ></ReactLeaflet>
+                </Route>
                 <Route
                     path="*"
                     render={() => {

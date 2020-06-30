@@ -1,17 +1,30 @@
 import React from "react";
-import Leaflet from 'leaflet';
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 
-const ReactLeaflet = () => {
-    const position = [51.505, -0.09];
+// https://react-leaflet.js.org/docs/en/examples 참고
+
+export const pointerIcon = new L.Icon({
+    iconUrl: require("leaflet/dist/images/marker-icon.png"),
+    iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+    // iconAnchor: [5, 55],
+    // popupAnchor: [10, -44],
+    // iconSize: [25, 55],
+    shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+    // shadowSize: [68, 95],
+    // shadowAnchor: [20, 92],
+});
+
+const ReactLeaflet = ({ lat, lng }) => {
+    const position = [lat, lng]; //위도(lat),경도(lng)
     const map = (
-        <Map center={position} zoom={13} style={{height: '400px'}}>
+        <Map center={position} zoom={13} style={{ height: "400px" }}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={position}>
+            <Marker position={position} icon={pointerIcon}>
                 <Popup>
                     A pretty CSS3 popup.
                     <br />
@@ -22,21 +35,10 @@ const ReactLeaflet = () => {
     );
     return (
         <div>
-            <h1>Leaflet 에러, 대안필요</h1>
+            <h1>Leaflet</h1>
             {map}
         </div>
     );
 };
-Leaflet.Icon.Default.imagePath =
-    '../node_modules/leaflet'
-
-delete Leaflet.Icon.Default.prototype._getIconUrl;
-
-Leaflet.Icon.Default.mergeOptions({
-    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    iconUrl: require('leaflet/dist/images/marker-icon.png'),
-    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-});
 
 export default ReactLeaflet;
-
