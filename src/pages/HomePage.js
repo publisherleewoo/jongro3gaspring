@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { plusAction } from "../reducer/test";
+import { plusAction } from "../actions/testAction";
 
 import { Button } from "react-bootstrap";
 
