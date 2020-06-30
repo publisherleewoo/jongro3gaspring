@@ -10,6 +10,9 @@ import RoomListPage from "./pages/RoomListPage";
 import RoomDetailPage from "./pages/RoomDetailPage";
 import ReactLeaflet from "./components/molecules/ReactLeaflet";
 import styled from "styled-components";
+import { Container, Row } from "react-bootstrap";
+import Layout1 from "./Layout/Layout1";
+import Layout2 from "./Layout/Layout2";
 
 const Anchor = styled(Link)`
     border: 1px solid black;
@@ -20,22 +23,34 @@ const Anchor = styled(Link)`
 function App() {
     return (
         <BrowserRouter>
-            <Anchor to={"/"}>index(인덱스)</Anchor>
-            <Anchor to={"/user/join"}>분리 회원가입</Anchor>
-            <Anchor to={"/user/login"}>분리 로그인</Anchor>
-            <Anchor to={"/user/mypage"}>마이페이지</Anchor>
-            <Anchor to={"/room/host"}>호스트</Anchor>
-            <Anchor to={"/room/list"}>리스트</Anchor>
-            <Anchor to={"/room/detail/1"}>디테일(방목록) 1</Anchor>
-            <Anchor to={"/test"}>Leaflet 서울시청 </Anchor>
-
+            <Container>
+                <Row xs={12} md={6}>
+                    <Anchor to={"/"}>index(인덱스)</Anchor>
+                    <Anchor to={"/user/join"}>분리 회원가입</Anchor>
+                    <Anchor to={"/user/login"}>분리 로그인</Anchor>
+                    <Anchor to={"/user/mypage"}>마이페이지</Anchor>
+                    <Anchor to={"/room/host"}>호스트</Anchor>
+                    <Anchor to={"/room/list"}>리스트</Anchor>
+                    <Anchor to={"/room/detail/1"}>디테일(방목록) 1</Anchor>
+                    <Anchor to={"/test"}>Leaflet 서울시청 </Anchor>
+                </Row>
+            </Container>
             <Switch>
-                <Route path={"/"} exact component={HomePage} />
+                <Route path={"/"} exact>
+                    <Layout1>
+                        <HomePage></HomePage>
+                    </Layout1>
+                </Route>
                 <Route path={"/user/join"} component={UserJoinPage} />
                 <Route path={"/user/login"} component={UserLoginPage} />
                 <Route path={"/user/mypage"} component={UserMyPage} />
                 <Route path={"/room/host"} component={RoomHostPage} />
-                <Route path={"/room/list"} component={RoomListPage} />
+
+                <Route path={"/room/list"} exact>
+                    <Layout2>
+                        <RoomListPage></RoomListPage>
+                    </Layout2>
+                </Route>
                 <Route path={"/room/detail/:id?"} component={RoomDetailPage} />
                 <Route path={"/test"}>
                     <ReactLeaflet
