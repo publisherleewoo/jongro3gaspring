@@ -19,7 +19,6 @@ const navInfo = [
 ];
 
 const GNBComponent = () => {
-    console.log(navInfo);
     return (
         <Container>
             <Row xs={12} md={6}>

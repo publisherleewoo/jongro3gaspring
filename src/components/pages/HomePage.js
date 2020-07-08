@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { plusAction } from "../actions/testAction";
+import { plusAction } from "../../actions/testAction";
 
 import { Button } from "react-bootstrap";
+import HeaderComponent from "../organisms/HeaderComponent";
+import FooterComponent from "../organisms/FooterComponent";
 
 const HomePage = () => {
     const reduxState = useSelector((state) => state.testReducer);
@@ -15,6 +17,7 @@ const HomePage = () => {
 
     return (
         <div>
+            <HeaderComponent />
             <h1>홈</h1>
             <table border="1" style={{ textAlign: "center" }}>
                 <tbody>
@@ -30,6 +33,7 @@ const HomePage = () => {
                     </tr>
                 </tbody>
             </table>
+            <FooterComponent />
         </div>
     );
 };
