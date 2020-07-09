@@ -7,7 +7,6 @@ import UserMyPage from "./components/pages/UserMyPage";
 import RoomHostPage from "./components/pages/RoomHostPage";
 import RoomListPage from "./components/pages/RoomListPage";
 import RoomDetailPage from "./components/pages/RoomDetailPage";
-import ReactLeaflet from "./components/molecules/ReactLeaflet";
 
 function App() {
     return (
@@ -20,12 +19,7 @@ function App() {
                 <Route path={"/room/host"} component={RoomHostPage} />
                 <Route path={"/room/list"} component={RoomListPage}></Route>
                 <Route path={"/room/detail/:id?"} component={RoomDetailPage} />
-                <Route
-                    path={"/test"}
-                    render={() => (
-                        <ReactLeaflet lat="37.5666805" lng=" 126.9784147" />
-                    )}
-                />
+
                 <Route
                     path="*"
                     render={() => {

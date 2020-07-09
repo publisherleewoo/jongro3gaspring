@@ -35,7 +35,7 @@ const ReactLeaflet = ({ lat, lng }) => {
     );
     return (
         <div>
-            <h1>Leaflet</h1>
+            Leaflet 부분 컴포넌트(임시 좌표)
             {map}
         </div>
     );
