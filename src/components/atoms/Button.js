@@ -1,10 +1,10 @@
 import React from "react";
 
 /////////////////////예시
-const Button = () => {
+const Button = ({ color }) => {
     return (
         <div>
-            <button>버튼</button>
+            <button style={{ color }}>버튼</button>
         </div>
     );
 };

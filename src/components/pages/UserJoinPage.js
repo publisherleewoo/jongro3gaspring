@@ -1,10 +1,11 @@
 import React from "react";
-import FooterComponent from "../organisms/FooterComponent";
+import Authentification from "../templates/Authentification";
 
 const JoinPage = () => {
     return (
         <div>
-            JoinPage <FooterComponent />
+            JoinPage
+            <Authentification type="join"></Authentification>
         </div>
     );
 };
