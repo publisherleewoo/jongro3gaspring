@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import HomePage from "./components/pages/HomePage";
 import UserJoinPage from "./components/pages/UserJoinPage";
 import UserLoginPage from "./components/pages/UserLoginPage";
@@ -10,7 +10,7 @@ import RoomDetailPage from "./components/pages/RoomDetailPage";
 
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Switch>
                 <Route path={"/"} exact component={HomePage} />
                 <Route path={"/user/join"} component={UserJoinPage} />
@@ -27,7 +27,7 @@ function App() {
                     }}
                 />
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
