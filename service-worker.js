@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/jongro3gaspring/precache-manifest.3b5cd1e524f6fd3f93cf0f68a476e5bc.js"
+  "/jongro3gaspring/precache-manifest.a3db8264defc21a83c55d033e033e49a.js"
 );
 
 self.addEventListener('message', (event) => {
