@@ -10,7 +10,7 @@ const navInfo = [
 
 const GNBComponent = () => {
     return (
-        <Nav>
+        <Nav class="collapse navbar-collapse">
             {navInfo.map(({ link, menu }) => (
                 <Link key={link} to={link} style={{ marginRight: "50px" }}>
                     {menu}

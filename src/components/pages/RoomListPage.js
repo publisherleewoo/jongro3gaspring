@@ -2,6 +2,7 @@ import React from "react";
 import HeaderComponent from "../organisms/HeaderComponent";
 import FooterComponent from "../organisms/FooterComponent";
 import { Link } from "react-router-dom";
+import imagA from "../../assets/image/motel.jpg";
 
 const roomList = [
     { link: "/room/detail/1", menu: "디테일(방목록) one" },
@@ -10,8 +11,9 @@ const roomList = [
 //   { link: "/test", menu: "Leaflet 서울시청 " },
 const RoomList = () => {
     return (
-        <div style={{ height: "2000px" }}>
+        <div>
             <HeaderComponent />
+            <div style={style.main}>
             <h1>RoomList</h1>
             {roomList.map((room, index) => (
                 <Link
@@ -22,9 +24,17 @@ const RoomList = () => {
                     {room.menu}
                 </Link>
             ))}
+            </div>
             <FooterComponent />
         </div>
     );
 };
 
 export default RoomList;
+
+const style = {
+    main: {
+        backgroundImage: "url("+imagA+")",
+        height: '800px'
+    }
+}

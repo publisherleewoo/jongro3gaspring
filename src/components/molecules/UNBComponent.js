@@ -11,9 +11,9 @@ const navInfo = [
 
 const UNBComponent = () => {
     return (
-        <Nav className="justify-content-end">
+        <Nav className="justify-content-end navbar-right navbar-nav nav">
             {navInfo.map(({ link, menu }) => (
-                <Link key={link} to={link} style={{ marginLeft: "10px" }}>
+                <Link className="nav-item active" key={link} to={link} style={{ marginLeft: "10px" }}>
                     {menu}
                 </Link>
             ))}
