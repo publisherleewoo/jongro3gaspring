@@ -1,11 +1,16 @@
 import React from "react";
-import Authentification from "../templates/Authentification";
+
+import { Container } from "react-bootstrap";
+import FooterComponent from "../organisms/FooterComponent";
+import UserJoinTemplate from "../templates/UserJoinTemplate";
 
 const JoinPage = () => {
     return (
         <div>
-            JoinPage
-            <Authentification type="join"></Authentification>
+            <Container style={{}}>
+                <UserJoinTemplate></UserJoinTemplate>
+            </Container>
+            <FooterComponent />
         </div>
     );
 };

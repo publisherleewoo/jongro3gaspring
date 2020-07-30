@@ -1,11 +1,11 @@
 import React from "react";
-import Authentification from "../templates/Authentification";
+import UserLoginTemplate from "../templates/UserLoginTemplate";
 
 const LoginPage = () => {
     return (
         <div>
             LoginPage
-            <Authentification type="login"></Authentification>
+            <UserLoginTemplate></UserLoginTemplate>
         </div>
     );
 };
