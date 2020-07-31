@@ -1,15 +1,15 @@
 import React from "react";
 
-import { Container } from "react-bootstrap";
 import FooterComponent from "../organisms/FooterComponent";
 import UserJoinTemplate from "../templates/UserJoinTemplate";
+import { Layout } from "antd";
 
 const JoinPage = () => {
     return (
         <div>
-            <Container style={{}}>
+            <Layout>
                 <UserJoinTemplate></UserJoinTemplate>
-            </Container>
+            </Layout>
             <FooterComponent />
         </div>
     );
