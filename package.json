@@ -60,5 +60,6 @@
         "@storybook/react": "^5.3.19",
         "babel-loader": "^8.1.0"
     },
-    "homepage": "https://publisherleewoo.github.io/jongro3gaspring/"
+    "homepage": "https://publisherleewoo.github.io/jongro3gaspring/",
+    "proxy": "http://localhost:5000/"
 }

@@ -1,7 +1,16 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Radio, Select, DatePicker, Tooltip } from "antd";
+import {
+    Form,
+    Input,
+    Button,
+    Radio,
+    Select,
+    DatePicker,
+    Tooltip,
+    Checkbox,
+} from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
-
+import * as UserApi from "../../module/Axios";
 // Member {
 // 	email(아이디) <input email>
 // 	pw
@@ -16,22 +25,49 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 // 	api_id
 // }
 const onFinish = (fieldsValue) => {
-    // Should format date value before submit.
+    let {
+        email,
+        password,
+        name,
+        nickname,
+        birth,
+        prefixPhone,
+        phone,
+        gender,
+    } = fieldsValue;
 
-    console.log("Received values of form: ", fieldsValue);
+    const result = {
+        email,
+        name,
+        password,
+        nickname,
+        birth,
+        phone: prefixPhone + phone,
+        gender,
+    };
+    console.log(result);
+    UserApi.register(result);
 };
 
 const prefixSelector = (
-    <Select defaultValue="010" style={{ width: 120 }}>
-        <Select.Option value="010">010</Select.Option>
-    </Select>
+    <Form.Item name="prefixPhone" noStyle>
+        <Select style={{ width: 120 }}>
+            <Select.Option value="010">010</Select.Option>
+        </Select>
+    </Form.Item>
 );
+
+const tailFormItemLayout = {
+    wrapperCol: {
+        sm: {
+            offset: 7,
+        },
+    },
+};
 
 const UserJoinTemplate = () => {
     const [componentSize, setComponentSize] = useState("default");
 
-    //daterpicker
-    //select option   useState 별도처리
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
@@ -46,7 +82,7 @@ const UserJoinTemplate = () => {
                 wrapperCol={{ span: 12 }}
                 style={{ marginBottom: "100px" }}
                 layout="horizontal"
-                initialValues={{ size: componentSize }}
+                initialValues={{ size: componentSize, prefixPhone: "010" }}
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
                 onFinish={onFinish}
@@ -79,6 +115,10 @@ const UserJoinTemplate = () => {
                             required: true,
                             message: "Please input your password!",
                         },
+                        {
+                            min: 8,
+                            message: "8 characters or more",
+                        },
                     ]}
                     hasFeedback
                 >
@@ -93,6 +133,10 @@ const UserJoinTemplate = () => {
                         {
                             required: true,
                             message: "Please confirm your password!",
+                        },
+                        {
+                            min: 8,
+                            message: "8 characters or more",
                         },
                         ({ getFieldValue }) => ({
                             validator(rule, value) {
@@ -120,6 +164,15 @@ const UserJoinTemplate = () => {
                             message: "Please input your name!",
                             whitespace: true,
                         },
+                        () => ({
+                            validator(rule, value) {
+                                if (value.replace(/[^0-9]/g, "")) {
+                                    return Promise.reject("Not Number");
+                                } else {
+                                    return Promise.resolve();
+                                }
+                            },
+                        }),
                     ]}
                 >
                     <Input />
@@ -156,7 +209,6 @@ const UserJoinTemplate = () => {
                     ]}
                 >
                     <DatePicker style={{ width: "100%" }} />
-                    {/* birth도 별도처리 */}
                 </Form.Item>
                 <Form.Item
                     name="phone"
@@ -165,6 +217,10 @@ const UserJoinTemplate = () => {
                         {
                             required: true,
                             message: "Please input your phone number!",
+                        },
+                        {
+                            min: 5,
+                            message: "It's short",
                         },
                     ]}
                 >
@@ -183,10 +239,25 @@ const UserJoinTemplate = () => {
                         placeholder="Select a option and change input text above"
                         allowClear
                     >
-                        <Select.Option value="male">male</Select.Option>
-                        <Select.Option value="female">female</Select.Option>
+                        <Select.Option value="0">male</Select.Option>
+                        <Select.Option value="1">female</Select.Option>
                     </Select>
                     {/* select 는 setState 별도처리 */}
+                </Form.Item>
+                <Form.Item
+                    name="agreement"
+                    valuePropName="checked"
+                    rules={[
+                        {
+                            validator: (_, value) =>
+                                value
+                                    ? Promise.resolve()
+                                    : Promise.reject("Should accept agreement"),
+                        },
+                    ]}
+                    {...tailFormItemLayout}
+                >
+                    <Checkbox>Agree</Checkbox>
                 </Form.Item>
                 <Form.Item wrapperCol={{ offset: 7 }}>
                     <Button type="primary" htmlType="submit">
